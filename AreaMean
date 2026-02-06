@@ -1,0 +1,41 @@
+interface Area{
+	double PI= 3.14;
+	double getArea();
+}
+class Circle implements Area{
+	double r;
+	Circle(double r){
+		this.r = r;
+	}
+	//override
+	public double getArea() {
+		 return (PI*r*r);
+	}
+	public void displayArea() {
+		System.out.println("Area of a circle = " +this.getArea());
+	}
+	
+}
+
+public class AreaMean {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Circle c1 = new Circle(8.5);
+		//System.out.println("Area of a circle = " +c1.getArea());
+		c1.displayArea();
+		
+		Area c2 = new Circle(12.3);
+		System.out.println("Area of a circle = " +c2.getArea());
+		
+		Area r1 = new Area() {
+		
+		public double getArea() {
+			int l = 10, b = 20;
+			return (l*b);
+		}};
+		
+	System.out.println("Area of a rectangle = " +r1.getArea());
+	}
+}
+
