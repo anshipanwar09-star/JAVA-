@@ -1,0 +1,56 @@
+import java.util.List;
+import java.util.ArrayList;
+
+public class Student1 {
+    private String name;
+    private String course;
+    private int sid;
+
+    public Student1(String name, String course, int sid) {
+        this.name = name;
+        this.course = course;
+        this.sid = sid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
+
+    public static void main(String[] args) {
+        List<Student1> studentInfo = new ArrayList<Student1>();
+
+        studentInfo.add(new Student1("Student1", "MCA", 1));
+        studentInfo.add(new Student1("Student2", "MCA", 2));
+        studentInfo.add(new Student1("Student3", "MCA", 3));
+        studentInfo.add(new Student1("Student4", "MCA", 4));
+        studentInfo.add(new Student1("Student5", "MCA", 5));
+
+        System.out.println("ID\tName\tCourse");
+
+        for (Student1 s : studentInfo) {
+            String result = String.format("%d\t%s\t%s", s.getSid(), s.getName(), s.getCourse());
+            System.out.println(result);
+        }
+    }
+}
+
