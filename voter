@@ -1,0 +1,33 @@
+package java8;
+
+class VoterNameValue{
+	void checkVoter1(int age) {
+		if(age>18) {
+			System.out.println("you can vote");
+		} else {
+			System.out.println("you can't vote");
+		}
+	}
+}
+@FunctionalInterface
+interface Voter{
+	void checkVoter(int age);
+}
+public class VoterMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Voter v = age ->{
+			if(age>18) {
+				System.out.println("you can vote");
+			} else {
+				System.out.println("you can't vote");
+			}
+		};
+		v.checkVoter(22);
+		VoterNameValue v1 = new VoterNameValue();
+		Voter voterRef = v1::checkVoter1;
+        voterRef.checkVoter(14);
+    }
+
+}
