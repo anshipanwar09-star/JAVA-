@@ -1,0 +1,34 @@
+package java8;
+interface Calc{
+	 void calculate(int n1, int n2);
+	default void calculate(int n1, int n2, int n3) {
+		int s = n1+n2+n3;
+		//System.out.println("Sum="+s);
+		getPrivateInfo("sum="+s);
+	}
+	 static String getInfo() {
+		return "This is static getInfo method inside calc Interface";
+	}
+	 private void getPrivateInfo(String msg) {
+		 System.out.println(msg);
+	 }
+}
+
+class sum implements Calc{
+	 public  void calculate(int n1, int n2) {
+			int s = n1+n2;
+			System.out.println("Sum="+s);
+		}
+}
+
+public class MainInterface {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		sum s = new sum();
+		s.calculate(12, 12);
+		s.calculate(1, 2, 3);
+		System.out.println(Calc.getInfo());
+	}
+
+}
