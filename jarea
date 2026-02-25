@@ -1,0 +1,5 @@
+module Juesarea {
+	//requires java.sql;
+	//exports edu.kiet.area;
+	requires Jarea;
+}
