@@ -1,0 +1,21 @@
+package FunInt;
+
+@FunctionalInterface
+interface Calc{
+	String square(int n1);
+}
+
+public class MainFunctionalInterface {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Calc a1 = (int n1)-> "Square"+n1*n1;
+			//int num1 = 10, num2 = 20;
+			//System.out.println("sum="+(n1+n2));
+			String res = a1.square(20);
+			System.out.println(res);
+	
+		}
+	}
+
+
