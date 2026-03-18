@@ -1,0 +1,29 @@
+package StreamAPI;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+import java.util.function.Consumer;
+
+public class FilterAPI {
+
+	public static void main(String[] args) {
+		// TODO Auto-geistnerated method stub
+		ArrayList <Integer> list = new ArrayList<Integer>();
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.addAll(List.of(23,33,45,67,70,77,85,87));
+		System.out.println(list);
+		//Stream listStream = list.stream();
+		list.stream().filter((n)->n >60).forEach((element)-> System.out.print(element + " "));
+	List <Integer> g60 = list.stream().filter((n)->n >60 && n <90).toList();
+		System.out.println();
+		System.out.println(g60);
+		//list.stream().forEach(System.out :: println);
+		System.out.println("count = "+list.stream().filter((item)->item > 60).count());
+
+		
+	}
+
+}
