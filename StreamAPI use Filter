@@ -1,0 +1,15 @@
+package StreamAPI;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Even {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> list = new ArrayList<>();
+		list.addAll(List.of(10,15,20,25,30,11,17,16));
+		System.out.println(list);
+		list.stream().filter((n) -> n%2== 0).forEach(System.out::println);
+	}
+
+}
