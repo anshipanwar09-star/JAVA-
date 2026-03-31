@@ -1,0 +1,66 @@
+package java10;
+import java.util.Arrays;
+import java.util.List;
+
+public class reduce {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer>list= Arrays.asList(34,12,45,76,34,56,54,32);
+		int sum=list.stream().reduce(0,(a,b)->a+b);
+		
+		
+		System.out.println("Sum="+sum);
+		double avg=sum/list.size();
+		System.out.println("Avg="+avg);
+		
+		int product=list.stream().reduce(1,(a,b)->a*b);
+		System.out.println("product="+product);
+		
+		int max=list.stream().reduce(Integer.MIN_VALUE,(a,b)->a>b?a:b);
+		System.out.println("maximum="+max);
+		
+		int Smax=list.stream().reduce(0,(a,b)->a>b&&a<max?a:b);
+		System.out.println("secondMax="+Smax);
+		
+		
+		
+		
+		
+		int min=list.stream().reduce(Integer.MAX_VALUE,(a,b)->a<b?a:b);
+		System.out.println("mimnimum="+min);
+		
+		int Smin=list.stream().reduce(Integer.MAX_VALUE,(a,b)->a<b&&a>min?a:b);
+		System.out.println("secondmin="+Smin);
+		
+		
+		
+		int count=list.stream().reduce(0,(a,b)->a+1);
+		System.out.println("number of elements="+count);
+		
+		int evensum=list.stream().reduce(0,(a,b)->a>b?a:b);
+		System.out.println("sum of even numbers ="+evensum);
+		
+		
+		List<String> list1 = Arrays.asList("Java", "Stream", "API", "Functional");
+
+        String longest = list1.stream()
+                .reduce((s1, s2) -> s1.length() > s2.length() ? s1 : s2) .orElse("");
+        System.out.println("longest length="+longest);
+        
+        //int res=list.stream().reduce(0,
+        	int num=123456;	
+        		int sum2 = String.valueOf(num).chars()                         
+                .map(c -> c - '0')               
+                .reduce(0, (a, b) -> a + b);    
+
+        System.out.println("Sum of digits: " + sum);
+   
+		
+        //find factorial using reduce()----> aayega exam me
+        	int value=6;
+        
+	}
+
+}
+
