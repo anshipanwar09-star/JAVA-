@@ -1,0 +1,20 @@
+package StreamAPIFilter;
+import java.util.*;
+public class PracticeSetFilter {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.addAll(List.of(1,2,3,4,5));
+		System.out.print("list is : " +list);
+		System.out.println();
+		list.stream().filter((n) -> n % 2 == 0).forEach(System.out::println);
+		
+		
+		ArrayList<String> name = new ArrayList<String>();
+		name.addAll(List.of("sachin", "rahul","shyam","Anshika","Anil"));
+		System.out.print("name is " +name);
+		System.out.println();
+		name.stream().filter((n) ->n.startsWith("A")).forEach(System.out::println);
+	}
+}
