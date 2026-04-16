@@ -1,0 +1,36 @@
+import java.sql.Connection;
+	import java.sql.DriverManager;
+	import java.sql.PreparedStatement;
+
+public class prepared_stmt {
+	
+	
+	    public static void main(String[] args) {
+	        try {
+	            Connection con = DriverManager.getConnection(
+	                "jdbc:mysql://localhost:3306/testdb",
+	                "root",
+	                "Anand@62018"
+	            );
+
+	            // Query with placeholders
+	            String query = "INSERT INTO student (id, name) VALUES (?, ?)";
+
+	            // Prepare statement
+	            PreparedStatement ps = con.prepareStatement(query);
+
+	            // Set values
+	            ps.setInt(1, 2);
+	            ps.setString(2, "Rahul");
+
+	            // Execute
+	            ps.executeUpdate();
+
+	            System.out.println("Data Inserted using PreparedStatement ✅");
+
+	        } catch (Exception e) {
+	            System.out.println(e);
+	        }
+	    }
+	}
+
