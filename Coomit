@@ -1,0 +1,81 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Savepoint;
+
+public class commit2emp {
+
+    public static void main(String[] args) {
+
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        try {
+            con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/testdb",
+                "root",
+                "Anand@62018"
+            );
+
+            
+            con.setAutoCommit(false);
+
+         
+            String createTable = "CREATE TABLE IF NOT EXISTS employee ("
+                    + "id INT PRIMARY KEY, "
+                    + "name VARCHAR(50), "
+                    + "salary DOUBLE)";
+
+            ps = con.prepareStatement(createTable);
+            ps.executeUpdate();
+
+            
+            Savepoint sp = con.setSavepoint("TableCreated");
+
+          
+            String insertQuery =
+                    "INSERT INTO employee(id, name, salary) VALUES (?, ?, ?)";
+
+            ps = con.prepareStatement(insertQuery);
+
+            ps.setInt(1, 1);
+            ps.setString(2, "Anand");
+            ps.setDouble(3, 25000);
+
+            int rows = ps.executeUpdate();
+
+            // If row affected then commit
+            if (rows > 0) {
+                con.commit();
+                System.out.println("Record Inserted Successfully");
+                System.out.println("Commit Done ");
+            } else {
+                con.rollback(sp);
+                System.out.println("No Row Inserted, Rollback to Savepoint");
+            }
+
+        } catch (Exception e) {
+            try {
+                if (con != null) {
+                    con.rollback();
+                    System.out.println("Error Occurred, Full Rollback Done");
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+
+            System.out.println(e);
+
+        } finally {
+            try {
+                if (ps != null)
+                    ps.close();
+                if (con != null)
+                    con.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
